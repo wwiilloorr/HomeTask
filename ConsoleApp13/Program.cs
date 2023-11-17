@@ -1,45 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ConsoleApp14
 {
     internal class Program
     {
+
+        public static void PlayGame(int numF, int numS)
+        {
+
+            Random random = new Random();
+            int numberF = 0;
+
+            int[] number = new int[100];
+
+            for (int i = 0; i < number.Length; i++)
+            {
+                number[i] = random.Next(1, 6);
+            }
+            for (int i = 0; i < number.Length; i++)
+            {
+                if (number[i] == numF)
+                {
+                    numberF++;
+                }
+            }
+            Console.WriteLine("Number " + "_" + numS + "_" + " repeated: " + "_" + numberF + "_" + " times!");
+        }
+
         static void Main(string[] args)
         {
-            Random random = new Random();
+            Console.InputEncoding = Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
 
-            int PlayerNumber = 0;
-
-            Console.Write("Введіть довжину масиву: ");
-            PlayerNumber = Convert.ToInt32(Console.ReadLine());
-
-            int[] number = new int[PlayerNumber];
-            for (int i = 0; i < number.Length; i++)
-            {
-                number[i] = random.Next(100, 900);
-            }
-
-            int minimum = 900;
-            int suma = 0;
-
-            for (int i = 0; i < number.Length; i++)
-            {
-
-                if (number[i] < minimum)
-                {
-                    minimum = number[i];
-                }
-                suma += number[i];
-            }
-
-            for (int i = 0; i < number.Length; i++)
-            {
-                Console.WriteLine(PlayerNumber + " : " + number[i]);
-            }
-            Console.WriteLine("Середнє арифметичне значення всіх чисел:" + (suma / PlayerNumber));
-            Console.WriteLine("Мінімальне число в масиві: " + minimum);
-
-
+            PlayGame(1, 1);
+            PlayGame(2, 2);
+            PlayGame(3, 3);
+            PlayGame(4, 4);
+            PlayGame(5, 5);
         }
     }
 }
+
